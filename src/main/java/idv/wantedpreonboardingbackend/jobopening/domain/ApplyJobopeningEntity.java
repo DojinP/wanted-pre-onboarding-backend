@@ -8,7 +8,7 @@ import lombok.Data;
 @Entity
 @AllArgsConstructor
 @Table(name = "APPLY_JOBOPENING")
-public class ApplyJopopeningEntity {
+public class ApplyJobopeningEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
