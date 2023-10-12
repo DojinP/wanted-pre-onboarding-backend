@@ -13,7 +13,9 @@ public class JobopeningService {
     JobopeningRepository jobopeningRepository;
 
     // 채용공고 등록
-
+    public JobopeningEntity registerJobopening(JobopeningEntity jobopeningEntity) {
+        return jobopeningRepository.save(jobopeningEntity);
+    }
     // 채용공고 수정
 
     // 채용공고 삭제
