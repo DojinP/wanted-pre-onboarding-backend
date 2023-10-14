@@ -34,6 +34,10 @@ public class JobopeningController {
     }
 
     // 채용공고 조회
+    @GetMapping()
+    public Response<?> findAllJobopening(){
+        return new Response<>("true", "조회 성공", jobopeningService.findAllJobopeing());
+    }
 
     // 채용공고 검색
 
