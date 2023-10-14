@@ -1,6 +1,8 @@
 package idv.wantedpreonboardingbackend;
 
 import idv.wantedpreonboardingbackend.custom.Response;
+import idv.wantedpreonboardingbackend.jobopening.domain.FindAllJobopeningDTO;
+import idv.wantedpreonboardingbackend.jobopening.domain.FindAllJobopeningDTOInterface;
 import idv.wantedpreonboardingbackend.jobopening.domain.JobopeningEntity;
 import idv.wantedpreonboardingbackend.jobopening.domain.UpdateJobopeningDTO;
 import idv.wantedpreonboardingbackend.jobopening.repository.JobopeningRepository;
@@ -17,6 +19,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -138,4 +141,23 @@ class WantedPreOnboardingBackendApplicationTests {
 		//jobopeningService.updateJobopening(updateJobopeningDTO, id);
 	}
 
+	@Test
+	void findAll() {
+		// given
+		String url = "http://localhost:" + port + "/preonboarding/jobopening";
+
+		// when
+		ResponseEntity response = restTemplate.exchange(
+				url,
+				HttpMethod.GET,
+				HttpEntity.EMPTY,
+				new ParameterizedTypeReference<Response<List<FindAllJobopeningDTO>>>() {
+				}
+		);
+
+		// then
+		//assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+		System.out.println(response.getStatusCode());
+		System.out.println(response.getBody());
+	}
 }

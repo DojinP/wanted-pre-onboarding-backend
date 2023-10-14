@@ -1,11 +1,15 @@
 package idv.wantedpreonboardingbackend.jobopening.service;
 
+import idv.wantedpreonboardingbackend.jobopening.domain.FindAllJobopeningDTO;
+import idv.wantedpreonboardingbackend.jobopening.domain.FindAllJobopeningDTOInterface;
 import idv.wantedpreonboardingbackend.jobopening.domain.JobopeningEntity;
 import idv.wantedpreonboardingbackend.jobopening.domain.UpdateJobopeningDTO;
 import idv.wantedpreonboardingbackend.jobopening.repository.JobopeningRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class JobopeningService {
@@ -35,6 +39,7 @@ public class JobopeningService {
         return jobopeningRepository.save(entity);
     }
 
+    // 채용공고 삭제
     @Transactional
     public String deleteJobopening(Long id) {
         JobopeningEntity entity = jobopeningRepository.findById(id).orElseThrow(() -> {
@@ -44,9 +49,10 @@ public class JobopeningService {
         return "삭제 성공";
     }
 
-    // 채용공고 삭제
-
     // 채용공고 조회
+    public List<FindAllJobopeningDTOInterface> findAllJobopeing() {
+        return jobopeningRepository.findAllJobopening();
+    }
 
     // 채용공고 검색
 
